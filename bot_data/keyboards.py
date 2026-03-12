@@ -1,11 +1,20 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
 
+workout_sex_reply_keyboard = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="Мужчина"), KeyboardButton(text="Женщина")],
+    ],
+    resize_keyboard=True,
+)
+
+
 workout_goal_reply_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [KeyboardButton(text="Сила")],
         [KeyboardButton(text="Похудение")],
         [KeyboardButton(text="Выносливость")],
+        [KeyboardButton(text="Набор мышц")],
     ],
     resize_keyboard=True,
 )
@@ -32,6 +41,27 @@ days_reply_keyboard = ReplyKeyboardMarkup(
 workout_equipment_reply_keyboard = ReplyKeyboardMarkup(
     keyboard=[
         [KeyboardButton(text="Дом"), KeyboardButton(text="Зал")],
+    ],
+    resize_keyboard=True,
+)
+
+
+workout_body_fat_reply_keyboard = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="Не знаю")],
+    ],
+    resize_keyboard=True,
+)
+
+
+workout_priority_reply_keyboard = ReplyKeyboardMarkup(
+    keyboard=[
+        [KeyboardButton(text="Все тело")],
+        [KeyboardButton(text="Ноги и ягодицы")],
+        [KeyboardButton(text="Спина")],
+        [KeyboardButton(text="Грудь и руки")],
+        [KeyboardButton(text="Плечи")],
+        [KeyboardButton(text="Пресс")],
     ],
     resize_keyboard=True,
 )
