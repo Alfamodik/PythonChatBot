@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from bot_data.state import MealState
-from services.hf_client import hf_chat
+from services.hf_client import hf_chat_meal
 
 
 @dataclass
@@ -193,5 +193,5 @@ def build_meal_plan_prompt(state: MealState, targets: MealTargets) -> str:
 async def generate_meal_plan(state: MealState) -> tuple[MealTargets, str]:
     targets = calculate_meal_targets(state)
     prompt = build_meal_plan_prompt(state, targets)
-    response_text = await hf_chat(prompt, max_tokens=2500)
+    response_text = await hf_chat_meal(prompt)
     return targets, response_text

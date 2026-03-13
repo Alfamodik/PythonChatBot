@@ -22,7 +22,7 @@ async def command_recipe_search(message: Message):
     await start_recipe_flow(message)
 
 
-@router.message(F.text)
+@router.message(lambda message: user_mode.get(message.from_user.id) == "recipes_input" and message.text)
 async def process_recipe_text(message: Message):
     user_id = message.from_user.id
 

@@ -17,15 +17,26 @@ hf_client = OpenAI(
 )
 
 hf_chat_model = "openai/gpt-oss-20b"
-#hf_chat_model = "katanemo/Arch-Router-1.5B:hf-inference"
+hf_chat_model_meal = "katanemo/Arch-Router-1.5B:hf-inference"
 
 
-async def hf_chat(prompt: str, max_tokens: int = 4000) -> str:
+async def hf_chat(prompt: str) -> str:
     def call() -> str:
         response = hf_client.chat.completions.create(
             model=hf_chat_model,
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=max_tokens,
+            max_tokens=4000,
+        )
+        return (response.choices[0].message.content or "").strip()
+
+    return await asyncio.to_thread(call)
+
+async def hf_chat_meal(prompt: str) -> str:
+    def call() -> str:
+        response = hf_client.chat.completions.create(
+            model=hf_chat_model_meal,
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=4000,
         )
         return (response.choices[0].message.content or "").strip()
 

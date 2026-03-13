@@ -39,10 +39,7 @@ async def send_long_message(message: Message, text: str, max_length: int = 3500)
     if text:
         text_parts.append(text)
 
-    print("TEXT PARTS COUNT:", len(text_parts))
-
     for index, text_part in enumerate(text_parts, start=1):
-        print(f"SEND PART {index} LENGTH:", len(text_part))
         await message.answer(text_part, reply_markup=ReplyKeyboardRemove())
 
 
@@ -223,10 +220,6 @@ async def select_meal_restrictions(message: Message):
 
     try:
         targets, response_text = await generate_meal_plan(state)
-
-        print("MEAL RESPONSE LENGTH:", len(response_text))
-        print("MEAL RESPONSE PREVIEW:", repr(response_text[:500]))
-
         await message.answer(build_targets_summary(targets), reply_markup=ReplyKeyboardRemove())
 
         if not response_text.strip():

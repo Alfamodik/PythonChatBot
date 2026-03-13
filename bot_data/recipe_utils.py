@@ -245,7 +245,7 @@ async def generate_menu_from_ingredients(user_ingredients: list[str]) -> str:
 """.strip()
 
     try:
-        return await hf_chat(prompt, max_tokens=1200)
+        return await hf_chat(prompt)
     except Exception:
         lines = ["🍽 Что можно приготовить", ""]
         for meal in best_meals[:5]:

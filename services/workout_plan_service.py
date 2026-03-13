@@ -89,4 +89,4 @@ def build_workout_prompt(profile: UserProfile, workout: WorkoutState) -> str:
 
 async def generate_workout_plan(profile: UserProfile, workout: WorkoutState) -> str:
     prompt = build_workout_prompt(profile, workout)
-    return await hf_chat(prompt, max_tokens=4000)
+    return await hf_chat(prompt)

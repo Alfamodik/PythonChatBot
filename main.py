@@ -4,7 +4,7 @@ import logging
 
 from openai import OpenAI
 from dotenv import load_dotenv
-from handlers import start, training_plan, meal_plan, recipe_search
+from handlers import start, training_plan, meal_plan, recipe_search, ai_chat
 
 from aiogram import Bot, Dispatcher
 from aiogram.types import BotCommand
@@ -19,6 +19,7 @@ dp.include_router(start.router)
 dp.include_router(training_plan.router)
 dp.include_router(meal_plan.router)
 dp.include_router(recipe_search.router)
+dp.include_router(ai_chat.router)
 
 async def main():
     commands = [
@@ -26,7 +27,8 @@ async def main():
         BotCommand(command="help", description="Показать список команд и подсказки"),
         BotCommand(command="training_plan", description="Составить план тренировок"),
         BotCommand(command="meal_plan", description="Составить план питания"),
-        BotCommand(command="recipe_search", description="Подобрать рецепт по продуктам")
+        BotCommand(command="recipe_search", description="Подобрать рецепт по продуктам"),
+        BotCommand(command="ai", description="Свободный вопрос нейросети")
     ]
     await bot.set_my_commands(commands)
     await dp.start_polling(bot)
