@@ -37,7 +37,7 @@ async def send_help_message(message: types.Message):
         "    <i>Создать план питания под твою цель</i>\n\n"
         "🥘 /recipe_search\n"
         "    <i>Найти рецепты по тем продуктам, которые у тебя есть</i>\n\n"
-        "🤖 /ai &lt;вопрос&gt;\n"
+        "🤖 /ai вопрос\n"
         "    <i>Задать свободный вопрос нейросети</i>\n\n",
         parse_mode="HTML",
         reply_markup=ReplyKeyboardRemove()
